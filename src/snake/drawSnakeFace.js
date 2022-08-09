@@ -1,7 +1,7 @@
 const drawSnakeFace = (i, j, ctx, rowCell, colCell, cellWidth, cellHeight) => {
 	let temp = ctx.fillStyle;
 	ctx.fillStyle = "#68bf45";
-	let len = 17;
+	let len = cellHeight/2;
 	ctx.fillRect(i*cellWidth+2,j*cellHeight+2,cellWidth-4,cellHeight-4);
 	ctx.fillStyle = 'black';
 	ctx.beginPath()

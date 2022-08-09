@@ -1,4 +1,4 @@
-const snakeBite = new Audio('https://jaikarans.github.io/snake-xenzia/snake-bite.mp3');
+const snakeBite = new Audio('https://jaikarans.github.io/snake-xenzia/asset/snake-bite.mp3');
 
 
 const snakeBiteSound = () => {
