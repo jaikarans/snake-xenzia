@@ -6,8 +6,8 @@ import right_handler from './src/Movehandler/right.js';
 import left_handler from './src/Movehandler/left.js';
 
 const canvas = document.getElementById('canvas');
-canvas.height = 1000;
-canvas.width = 1000;
+canvas.height = 900;
+canvas.width = 900;
 var ctx = canvas.getContext('2d');
 ctx.fillStyle = 'green';
 canvas.style = "background-image: url('./asset/black.jpg')";
@@ -49,15 +49,14 @@ printArray(arr);
 
 var intervalId;
 var respond;
-var delay = 100;
+var delay = 70;
 drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
 window.addEventListener('keydown', (event) => {
-	console.log(event.key);
+	console.log(event.key);	
 	// to terminate the Interval function
 	// clearInterval(IntervalId) method is used for that perpose
 	
-
-	if (event.key == 'ArrowUp' && !arrowUpPressedAlready && !arrowDownPressedAlready) {
+	if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
 		clearInterval(intervalId);
 		arrowUpPressedAlready = true;
 		arrowDownPressedAlready = false;
@@ -75,7 +74,7 @@ window.addEventListener('keydown', (event) => {
 		}, delay);
 
 	}
-	else if (event.key == 'ArrowDown' && !arrowUpPressedAlready && !arrowDownPressedAlready) {
+	else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
 		clearInterval(intervalId);
 		arrowUpPressedAlready = false;
 		arrowDownPressedAlready = true;
@@ -93,7 +92,7 @@ window.addEventListener('keydown', (event) => {
 		}, delay);
 
 	}
-	else if (event.key == 'ArrowLeft' && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
+	else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
 		clearInterval(intervalId);
 		arrowUpPressedAlready = false;
 		arrowDownPressedAlready = false;
@@ -109,9 +108,9 @@ window.addEventListener('keydown', (event) => {
 			}
 			// printArray(arr);
 		}, delay);
-		console.log(intervalId);
+		// console.log(intervalId);
 	}
-	if (event.key == 'ArrowRight' && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
+	if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
 		clearInterval(intervalId);
 		arrowUpPressedAlready = false;
 		arrowDownPressedAlready = false;
@@ -128,7 +127,7 @@ window.addEventListener('keydown', (event) => {
 			}
 		}, delay);
 	}
-	console.log(intervalId);
+	// console.log(intervalId);
 
 });
 
