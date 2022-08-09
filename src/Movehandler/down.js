@@ -1,4 +1,5 @@
 import generateFruit from "../fruit/generateFruit.js";
+import snakeBiteSound from "../util/biteSound.js";
 
 const down_handler = (arr, snakeQueue) => {
 	// console.log(snakeQueue);
@@ -15,6 +16,7 @@ const down_handler = (arr, snakeQueue) => {
 		arr[frontX][frontY] = 2;
 		snakeQueue.unshift([frontX, frontY]);
 		generateFruit(arr);
+		snakeBiteSound();
 
 	}
 	// when snake hits the wall and comes to other side of wall and hits itself
@@ -39,6 +41,7 @@ const down_handler = (arr, snakeQueue) => {
 		arr[frontX][frontY] = 2;
 		snakeQueue.unshift([frontX, frontY]);
 		generateFruit(arr);
+		snakeBiteSound();
 	}
 	// when next cell is body of snake itself
 	else if (arr[frontX][frontY+1] == 1) {

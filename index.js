@@ -44,42 +44,12 @@ snakeQueue.push([10,14]);
 
 // adding fruits
 arr[10][20] = 3;
-// arr[12][10] = 3;
-// arr[24][10] = 3;
-// arr[0][10] = 3;
-// arr[1][10] = 3;
-// arr[7][10] = 3;
-// arr[10][19] = 3;
-// arr[3][10] = 3;
-// arr[2][11] = 3;
-// arr[15][1] = 3;
-// arr[13][10] = 3;
-// arr[2][8] = 3;
-
-// arr[12][20] = 3;
-// arr[13][10] = 3;
-// arr[24][20] = 3;
-// arr[3][0] = 3;
-// arr[1][10] = 3;
-// arr[9][10] = 3;
-// arr[7][19] = 3;
-// arr[2][10] = 3;
-// arr[6][11] = 3;
-// arr[18][1] = 3;
-// arr[16][10] = 3;
-// arr[12][8] = 3;
-// arr[17][1] = 3;
-// arr[11][10] = 3;
-// arr[13][8] = 3;
-// arr[24][1] = 3;
-// arr[4][10] = 3;
-// arr[12][15] = 3;
 
 printArray(arr);
 
 var intervalId;
 var respond;
-var delay = 50;
+var delay = 150;
 drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
 window.addEventListener('keydown', (event) => {
 	console.log(event.key);
