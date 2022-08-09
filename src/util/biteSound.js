@@ -1,4 +1,4 @@
-const snakeBite = new Audio('../../asset/snake-bite.mp3');
+const snakeBite = new Audio('../../snake-bite.mp3');
 
 const snakeBiteSound = () => {
 	snakeBite.play();
