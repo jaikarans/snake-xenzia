@@ -6,7 +6,7 @@ import right_handler from './src/Movehandler/right.js';
 import left_handler from './src/Movehandler/left.js';
 
 const snakeBite = document.createElement("audio");
-snakeBite.src = '../../snake-bite.mp3';
+snakeBite.src = 'https://jaikarans.github.io/snake-xenzia/snake-bite.mp3';
 snakeBite.setAttribute("preload", "auto");
 snakeBite.setAttribute("controls", "none");
 snakeBite.style.display = "none";
