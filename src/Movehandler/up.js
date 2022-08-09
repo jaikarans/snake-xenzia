@@ -1,3 +1,5 @@
+import generateFruit from "../fruit/generateFruit.js";
+
 const up_handler = (arr, snakeQueue) => {
 	// console.log(snakeQueue);
 	let frontX = snakeQueue[0][0];
@@ -12,6 +14,8 @@ const up_handler = (arr, snakeQueue) => {
 		frontY = arr[0].length - 1;
 		arr[frontX][frontY] = 2;
 		snakeQueue.unshift([frontX, frontY]);
+		generateFruit(arr);
+
 
 	}
 	// when snake hits the wall and comes to other side of wall and hits itself
@@ -35,6 +39,8 @@ const up_handler = (arr, snakeQueue) => {
 		frontY -= 1;
 		arr[frontX][frontY] = 2;
 		snakeQueue.unshift([frontX, frontY]);
+		generateFruit(arr);
+
 	}
 	// when next cell is body of snake itself
 	else if (arr[frontX][frontY-1] == 1) {
