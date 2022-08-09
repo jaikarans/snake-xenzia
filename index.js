@@ -6,8 +6,8 @@ import right_handler from './src/Movehandler/right.js';
 import left_handler from './src/Movehandler/left.js';
 
 const canvas = document.getElementById('canvas');
-canvas.height = 900;
-canvas.width = 900;
+canvas.height = 1000;
+canvas.width = 1000;
 var ctx = canvas.getContext('2d');
 ctx.fillStyle = 'green';
 canvas.style = "background-image: url('./asset/black.jpg')";
