@@ -1,10 +1,21 @@
 import drawSnake from './src/snake/drawSnake.js';
-import generateArray from './src/snakeArray.js';
+import {generateArray, newSnake} from './src/snakeArray.js';
 import up_handler from './src/Movehandler/up.js';
 import down_handler from './src/Movehandler/down.js';
 import right_handler from './src/Movehandler/right.js';
 import left_handler from './src/Movehandler/left.js';
 
+const score = document.getElementById('score');
+// const highestScore = document.getElementById('highestScore');
+
+// loading font to body
+var myFont = new FontFace('myFont', 'url(asset/PressStart2P-Regular.ttf)');
+myFont.load().then(function(font) {
+	document.fonts.add(font);
+  	console.log('Font loaded');
+});
+
+// document.getElementById('highestScore').style = 'font-family: myFont';
 const canvas = document.getElementById('canvas');
 canvas.height = 900;
 canvas.width = 900;
@@ -22,15 +33,11 @@ var colCell = 30;
 var cellHeight = canvas.height/colCell;
 var cellWidth = canvas.width/colCell;
 
-var arr = [[]];
-generateArray(arr, rowCell, colCell);
-const printArray = (arr) => {
-	for (let i=0; i<arr.length; i++) {
-		console.log(arr[i]);
-	}
-}
 
+var arr = [[]];
 var snakeQueue = new Array();
+generateArray(arr, rowCell, colCell);
+
 arr[10][10] = 2;
 arr[10][11] = 1;
 arr[10][12] = 1;
@@ -43,18 +50,83 @@ snakeQueue.push([10,13]);
 snakeQueue.push([10,14]);
 
 // adding fruits
-arr[10][20] = 3;
+arr[18][8] = 3;
+
+
+const printArray = (arr) => {
+	for (let i=0; i<arr.length; i++) {
+		console.log(arr[i]);
+	}
+}
 
 printArray(arr);
 
 var intervalId;
 var respond;
 var delay = 70;
+var mouseClick = document.getElementById('mouse-click');
 drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
+
+document.getElementById('easy').addEventListener('click', () => {
+	clearInterval(intervalId);
+	mouseClick.play();
+	document.getElementById('delay').innerHTML = 100;
+	newSnake(arr, snakeQueue);
+	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
+	arrowUpPressedAlready = false;
+	arrowDownPressedAlready = false;
+	arrowLeftPressedAlready = false;
+	arrowRightPressedAlready = false;
+	
+});
+document.getElementById('medium').addEventListener('click', () => {
+	clearInterval(intervalId);
+	mouseClick.play();
+	document.getElementById('delay').innerHTML = 80;
+	newSnake(arr, snakeQueue);
+	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
+	arrowUpPressedAlready = false;
+	arrowDownPressedAlready = false;
+	arrowLeftPressedAlready = false;
+	arrowRightPressedAlready = false;
+	
+});
+document.getElementById('hard').addEventListener('click', () => {
+	clearInterval(intervalId);
+	mouseClick.play();
+	document.getElementById('delay').innerHTML = 20;
+	newSnake(arr, snakeQueue);
+	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
+	arrowUpPressedAlready = false;
+	arrowDownPressedAlready = false;
+	arrowLeftPressedAlready = false;
+	arrowRightPressedAlready = false;
+	
+});
+document.getElementById('how-to-play').addEventListener('click', () => {
+	clearInterval(intervalId);
+	mouseClick.play();
+	newSnake(arr, snakeQueue);
+	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
+	arrowUpPressedAlready = false;
+	arrowDownPressedAlready = false;
+	arrowLeftPressedAlready = false;
+	arrowRightPressedAlready = false;
+	
+});
+
 window.addEventListener('keydown', (event) => {
-	console.log(event.key);	
+	// console.log(event.key);	
 	// to terminate the Interval function
 	// clearInterval(IntervalId) method is used for that perpose
+	if (event.key == ' ') {
+		clearInterval(intervalId);
+		arrowUpPressedAlready = false;
+		arrowDownPressedAlready = false;
+		arrowLeftPressedAlready = false;
+		arrowRightPressedAlready = false;
+	}
+
 	
 	if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
 		clearInterval(intervalId);
@@ -71,7 +143,7 @@ window.addEventListener('keydown', (event) => {
 				clearInterval(intervalId);
 			}
 			// printArray(arr);
-		}, delay);
+		}, Number(document.getElementById('delay').innerHTML));
 
 	}
 	else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
@@ -89,7 +161,7 @@ window.addEventListener('keydown', (event) => {
 				clearInterval(intervalId);
 			}
 			// printArray(arr);
-		}, delay);
+		}, Number(document.getElementById('delay').innerHTML));
 
 	}
 	else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
@@ -107,7 +179,7 @@ window.addEventListener('keydown', (event) => {
 				clearInterval(intervalId);
 			}
 			// printArray(arr);
-		}, delay);
+		}, Number(document.getElementById('delay').innerHTML));
 		// console.log(intervalId);
 	}
 	if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
@@ -125,7 +197,7 @@ window.addEventListener('keydown', (event) => {
 			if (respond == 'exit') {
 				clearInterval(intervalId);
 			}
-		}, delay);
+		}, Number(document.getElementById('delay').innerHTML));
 	}
 	// console.log(intervalId);
 

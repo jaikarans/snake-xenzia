@@ -1,15 +1,70 @@
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@700&display=swap'); */
+
 *{
 	margin: 0;
 	padding: 0;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 15px;
+
 }
 
 body{
 	text-align: center;
-	/* margin-top: 50px; */
+	font-family: 'PressStart';
+	color: rgb(175, 175, 175);
+	background-color: #333232;
+	align-items: center;
+	display: flex;
+	
 
 }
 
 #canvas {
-	margin: 0;
-
+	margin-top: 15px;
+	-webkit-box-shadow: 0 0 50px #000000;
+	box-shadow: 0 0 50px #000000;
+	display: inline;
 }
+
+#score {
+	color: azure;
+	font-size: 40px;
+}
+
+#menu {
+	margin-top: -150px;
+	float: left;
+	margin-right: 50px;
+	margin-left: 50px;
+	
+}
+
+#submenu {
+	margin-left: 50px;
+}
+
+
+#title {
+	
+	font-size: 45px;
+	align-items: center;
+}
+
+#highestScore {
+	font-size: 20px;
+}
+
+#highScore {
+	font-size: 40px;
+}
+
+.buttons {
+	font-size: 35px;
+	padding: 10px;
+}
+
+div.buttons:hover {
+	background-color: #262626;
+	color: beige;
+	box-shadow: 10px 10px 15px black;
+} 
