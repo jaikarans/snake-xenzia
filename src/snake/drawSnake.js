@@ -1,31 +1,37 @@
 import drawSnakeFace from './drawSnakeFace.js';
 import drawFruit from '../fruit/drawFruit.js';
 
-let temp;
-const drawSnake = (arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight) => {
-	ctx.fillStyle = 'black';
+const drawSnake = () => {
+	let h = window.cellHeight;
+	let w = window.cellWidth;
+	let arr = window.arr;
+	let canvas = window.canvas;
+	let ctx = window.ctx;
+
+	let temp = ctx.fillStyle;
+
 	ctx.font = '25px myFont';
+
+	ctx.fillStyle = 'black';
 	ctx.fillRect(0,0,canvas.width, canvas.height);
 	ctx.fillStyle = '#68bf45';
-	for (let i=0; i<rowCell; i++) {
-		for (let j=0; j<colCell; j++) {
-			
+	
+	for (let i=0; i<window.rowCell; i++) {
+		for (let j=0; j<window.colCell; j++) {
 			if (arr[i][j] == 1) {
-				ctx.strokeRect(i*cellWidth,j*cellHeight,cellWidth,cellHeight);
-				ctx.fillRect(i*cellWidth+2,j*cellHeight+2,cellWidth-4,cellHeight-4);
+				ctx.strokeRect(i*w,j*h,w,h);
+				ctx.fillRect(i*w+2,j*h+2,w-4,h-4);
 			}
 			else if (arr[i][j] == 2) {
-				drawSnakeFace(i, j, ctx, rowCell, colCell, cellWidth, cellHeight);
+				drawSnakeFace(i, j);
 			}
 			else if (arr[i][j] == 3) {
-				drawFruit(i, j, ctx, rowCell, colCell, cellWidth, cellHeight);
+				drawFruit(i, j);
 			}
 			
 			temp = ctx.fillStyle;
 			ctx.fillStyle = "#eeeeee";
-			// previousShadowBlur = ctx.shadowBlur;
-			// ctx.shadowBlur = 0;
-			ctx.fillText(score.innerHTML, rowCell*cellWidth-cellWidth-70, cellHeight+15);
+			ctx.fillText(score.innerHTML, window.rowCell*w-w-70, h+15);
 			ctx.fillStyle = temp;
 		}
 	}

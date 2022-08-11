@@ -1,14 +1,16 @@
 import drawSnake from './src/snake/drawSnake.js';
 import {generateArray, newSnake} from './src/snakeArray.js';
-import up_handler from './src/Movehandler/up.js';
-import down_handler from './src/Movehandler/down.js';
-import right_handler from './src/Movehandler/right.js';
-import left_handler from './src/Movehandler/left.js';
+import setEasyLevel from './src/menu/easy.js';
+import setMediumLevel from './src/menu/medium.js';
+import setHardLevel from './src/menu/hard.js';
+import showInstruction from './src/menu/howTo.js';
+import pauseGame from './src/Movehandler/pause.js';
+import moveUp from './src/Movehandler/moveUp.js';
+import moveDown from './src/Movehandler/moveDown.js';
+import moveLeft from './src/Movehandler/moveLeft.js';
+import moveRight from './src/Movehandler/moveRight.js';
 
-const score = document.getElementById('score');
-// const highestScore = document.getElementById('highestScore');
 
-// loading font to body
 var myFont = new FontFace('myFont', 'url(asset/PressStart2P-Regular.ttf)');
 myFont.load().then(function(font) {
 	document.fonts.add(font);
@@ -16,190 +18,54 @@ myFont.load().then(function(font) {
 });
 
 // document.getElementById('highestScore').style = 'font-family: myFont';
-const canvas = document.getElementById('canvas');
-canvas.height = 900;
-canvas.width = 900;
-var ctx = canvas.getContext('2d');
-ctx.fillStyle = 'green';
-canvas.style = "background-image: url('./asset/black.jpg')";
+window.canvas = document.getElementById('canvas');
+window.canvas.height = 900;
+window.canvas.width = 900;
+window.ctx = window.canvas.getContext('2d');
+window.ctx.fillStyle = 'green';
+window.canvas.style = "background-image: url('./asset/black.jpg')";
 
-var arrowUpPressedAlready = false;
-var arrowDownPressedAlready = false;
-var arrowLeftPressedAlready = false;
-var arrowRightPressedAlready = false;
+window.arrowUpPressedAlready = false;
+window.arrowDownPressedAlready = false;
+window.arrowLeftPressedAlready = false;
+window.arrowRightPressedAlready = false;
 
-var rowCell = 30;
-var colCell = 30;
-var cellHeight = canvas.height/colCell;
-var cellWidth = canvas.width/colCell;
+window.rowCell = 30;
+window.colCell = 30;
+window.cellHeight = window.canvas.height/window.colCell;
+window.cellWidth = window.canvas.width/window.colCell;
 
+window.intervalId = null;
 
-var arr = [[]];
-var snakeQueue = new Array();
-generateArray(arr, rowCell, colCell);
+window.arr = [[]];
+window.snakeQueue = new Array();
+generateArray();
+newSnake();
 
-arr[10][10] = 2;
-arr[10][11] = 1;
-arr[10][12] = 1;
-arr[10][13] = 1;
-arr[10][14] = 1;
-snakeQueue.push([10,10]);
-snakeQueue.push([10,11]);
-snakeQueue.push([10,12]);
-snakeQueue.push([10,13]);
-snakeQueue.push([10,14]);
+drawSnake();
 
-// adding fruits
-arr[18][8] = 3;
-
-
-const printArray = (arr) => {
-	for (let i=0; i<arr.length; i++) {
-		console.log(arr[i]);
-	}
-}
-
-printArray(arr);
-
-var intervalId;
-var respond;
-var delay = 70;
-var mouseClick = document.getElementById('mouse-click');
-drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-
-document.getElementById('easy').addEventListener('click', () => {
-	clearInterval(intervalId);
-	mouseClick.play();
-	document.getElementById('delay').innerHTML = 100;
-	newSnake(arr, snakeQueue);
-	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-	arrowUpPressedAlready = false;
-	arrowDownPressedAlready = false;
-	arrowLeftPressedAlready = false;
-	arrowRightPressedAlready = false;
-	
-});
-document.getElementById('medium').addEventListener('click', () => {
-	clearInterval(intervalId);
-	mouseClick.play();
-	document.getElementById('delay').innerHTML = 80;
-	newSnake(arr, snakeQueue);
-	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-	arrowUpPressedAlready = false;
-	arrowDownPressedAlready = false;
-	arrowLeftPressedAlready = false;
-	arrowRightPressedAlready = false;
-	
-});
-document.getElementById('hard').addEventListener('click', () => {
-	clearInterval(intervalId);
-	mouseClick.play();
-	document.getElementById('delay').innerHTML = 20;
-	newSnake(arr, snakeQueue);
-	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-	arrowUpPressedAlready = false;
-	arrowDownPressedAlready = false;
-	arrowLeftPressedAlready = false;
-	arrowRightPressedAlready = false;
-	
-});
-document.getElementById('how-to-play').addEventListener('click', () => {
-	clearInterval(intervalId);
-	mouseClick.play();
-	newSnake(arr, snakeQueue);
-	drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-	arrowUpPressedAlready = false;
-	arrowDownPressedAlready = false;
-	arrowLeftPressedAlready = false;
-	arrowRightPressedAlready = false;
-	
-});
+document.getElementById('easy').addEventListener('click', setEasyLevel);
+document.getElementById('medium').addEventListener('click', setMediumLevel);
+document.getElementById('hard').addEventListener('click', setHardLevel);
+document.getElementById('how-to-play').addEventListener('click', showInstruction);
 
 window.addEventListener('keydown', (event) => {
-	// console.log(event.key);	
-	// to terminate the Interval function
-	// clearInterval(IntervalId) method is used for that perpose
 	if (event.key == ' ') {
-		clearInterval(intervalId);
-		arrowUpPressedAlready = false;
-		arrowDownPressedAlready = false;
-		arrowLeftPressedAlready = false;
-		arrowRightPressedAlready = false;
-	}
+		pauseGame();
 
-	
-	if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
-		clearInterval(intervalId);
-		arrowUpPressedAlready = true;
-		arrowDownPressedAlready = false;
-		arrowLeftPressedAlready = false;
-		arrowRightPressedAlready = false;
+	} else if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') && !window.arrowUpPressedAlready && !window.arrowDownPressedAlready) {
+		moveUp();
 
-		intervalId = setInterval(() => {
-			console.log('up');
-			respond = up_handler(arr, snakeQueue);
-			drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-			if (respond == 'exit') {
-				clearInterval(intervalId);
-			}
-			// printArray(arr);
-		}, Number(document.getElementById('delay').innerHTML));
+	} else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') && !window.arrowUpPressedAlready && !window.arrowDownPressedAlready) {
+		moveDown();
+
+	} else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') && !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready) {
+		moveLeft();
+
+	} else if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') && !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready) {
+		moveRight();
 
 	}
-	else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') && !arrowUpPressedAlready && !arrowDownPressedAlready) {
-		clearInterval(intervalId);
-		arrowUpPressedAlready = false;
-		arrowDownPressedAlready = true;
-		arrowLeftPressedAlready = false;
-		arrowRightPressedAlready = false;
-
-		intervalId = setInterval(() => {
-			console.log('down');
-			respond = down_handler(arr, snakeQueue);
-			drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-			if (respond == 'exit') {
-				clearInterval(intervalId);
-			}
-			// printArray(arr);
-		}, Number(document.getElementById('delay').innerHTML));
-
-	}
-	else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
-		clearInterval(intervalId);
-		arrowUpPressedAlready = false;
-		arrowDownPressedAlready = false;
-		arrowLeftPressedAlready = true;
-		arrowRightPressedAlready = false;
-
-		intervalId = setInterval(() => {
-			console.log('left');
-			respond = left_handler(arr, snakeQueue);
-			drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-			if (respond == 'exit') {
-				clearInterval(intervalId);
-			}
-			// printArray(arr);
-		}, Number(document.getElementById('delay').innerHTML));
-		// console.log(intervalId);
-	}
-	if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') && !arrowLeftPressedAlready && !arrowRightPressedAlready) {
-		clearInterval(intervalId);
-		arrowUpPressedAlready = false;
-		arrowDownPressedAlready = false;
-		arrowLeftPressedAlready = false;
-		arrowRightPressedAlready = true;
-
-		intervalId = setInterval(() => {
-			console.log('right');
-			respond = right_handler(arr, snakeQueue);
-			// printArray(arr);
-			drawSnake(arr, canvas, ctx, rowCell, colCell, cellWidth, cellHeight);
-			if (respond == 'exit') {
-				clearInterval(intervalId);
-			}
-		}, Number(document.getElementById('delay').innerHTML));
-	}
-	// console.log(intervalId);
 
 });
 
