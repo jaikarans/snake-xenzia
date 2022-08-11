@@ -15,6 +15,24 @@ const setMediumLevel = () => {
 	window.arrowLeftPressedAlready = false;
 	window.arrowRightPressedAlready = false;
 	
+	// button highlighting
+	let easy = document.getElementById('easy');
+	let medium = document.getElementById('medium');
+	let hard = document.getElementById('hard');
+	let howTo = document.getElementById('how-to-play');
+
+	easy.style.backgroundColor = '#333232';
+	easy.style.boxShadow = 'none';
+
+	medium.style.backgroundColor = '#262626';
+	medium.style.boxShadow = '10px 10px 15px black';
+
+	hard.style.backgroundColor = '#333232';
+	hard.style.boxShadow = 'none';
+
+	howTo.style.backgroundColor = '#333232';
+	howTo.style.boxShadow = 'none';
+
 }
 
 export default setMediumLevel;

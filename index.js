@@ -42,6 +42,8 @@ window.snakeQueue = new Array();
 generateArray();
 newSnake();
 
+window.currentDirection = 'up';
+
 drawSnake();
 
 document.getElementById('easy').addEventListener('click', setEasyLevel);
@@ -53,16 +55,24 @@ window.addEventListener('keydown', (event) => {
 	if (event.key == ' ') {
 		pauseGame();
 
-	} else if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') && !window.arrowUpPressedAlready && !window.arrowDownPressedAlready) {
+	} else if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') &&
+	 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'down') {
+		window.currentDirection = 'up';
 		moveUp();
 
-	} else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') && !window.arrowUpPressedAlready && !window.arrowDownPressedAlready) {
+	} else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') &&
+	 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'up') {
+		window.currentDirection = 'down';
 		moveDown();
 
-	} else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') && !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready) {
+	} else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') &&
+	 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'right') {
+		window.currentDirection = 'left';
 		moveLeft();
 
-	} else if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') && !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready) {
+	} else if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') &&
+	 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'left') {
+		window.currentDirection = 'right';
 		moveRight();
 
 	}

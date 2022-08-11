@@ -1,6 +1,7 @@
 import generateFruit from "../fruit/generateFruit.js";
 import snakeBiteSound from "../util/biteSound.js";
-import gameOverSound from "../util/gameOver.js";
+import {gameOverSound, updateScore} from "../util/gameOver.js";
+import gameNotPaused from "../util/gameStatus.js";
 import increaseScore from '../util/increaseScore.js';
 
 const down_handler = () => {
@@ -27,6 +28,7 @@ const down_handler = () => {
 	// when snake hits the wall and comes to other side of wall and hits itself
 	else if (frontY+1 > arr[0].length-1 && arr[frontX][0] == 1) {
 		clearInterval(window.intervalId);
+		updateScore();
 		gameOverSound();
 
 	}
@@ -51,8 +53,9 @@ const down_handler = () => {
 		increaseScore();
 	}
 	// when next cell is body of snake itself
-	else if (arr[frontX][frontY+1] == 1) {
+	else if (arr[frontX][frontY+1] == 1 && gameNotPaused()) {
 		clearInterval(window.intervalId);
+		updateScore();
 		gameOverSound();
 		// return 'exit';
 	}
