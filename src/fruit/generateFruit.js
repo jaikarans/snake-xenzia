@@ -1,4 +1,5 @@
 const generateFruit = () => {
+	console.log('generateFruit()');
 	let arr = window.arr;
 	let i = Math.floor(Math.random() * arr.length);
 	let j = Math.floor(Math.random() * arr[0].length);

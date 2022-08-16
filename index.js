@@ -10,6 +10,8 @@ import moveDown from './src/Movehandler/moveDown.js';
 import moveLeft from './src/Movehandler/moveLeft.js';
 import moveRight from './src/Movehandler/moveRight.js';
 
+console.log(window.innerWidth +" "+ window.innerHeight);
+// console.log(window.body.clientWidth+" "+window.innerWidth); 
 
 var myFont = new FontFace('myFont', 'url(asset/PressStart2P-Regular.ttf)');
 myFont.load().then(function(font) {
@@ -19,8 +21,9 @@ myFont.load().then(function(font) {
 
 // document.getElementById('highestScore').style = 'font-family: myFont';
 window.canvas = document.getElementById('canvas');
-window.canvas.height = 900;
-window.canvas.width = 900;
+window.canvas.height = window.innerHeight - Math.floor(4*window.innerHeight/100);
+window.canvas.width = window.innerHeight - Math.floor(4*window.innerHeight/100);
+console.log('canvas h '+canvas.height+" "+canvas.width);
 window.ctx = window.canvas.getContext('2d');
 window.ctx.fillStyle = 'green';
 window.canvas.style = "background-image: url('./asset/black.jpg')";

@@ -20,7 +20,7 @@ body{
 }
 
 #canvas {
-	margin-top: 15px;
+	margin-top: 2vh;
 	-webkit-box-shadow: 0 0 50px #000000;
 	box-shadow: 0 0 50px #000000;
 	display: inline;
@@ -32,39 +32,68 @@ body{
 }
 
 #menu {
-	margin-top: -150px;
+	margin-top: 2vh;
 	float: left;
-	margin-right: 50px;
-	margin-left: 50px;
+	height: 96vh;
+	width : calc((100vw - 96vh));
+	align-items: center;
+	display: flex;
 	
 }
 
+#menu > div {
+	padding: 4vw;
+	width: 100%;
+	/* height: 100%; */
+}
+
+#menu > div > div{
+	/* position: absolute; */
+	/* top: 50%; */
+	font-size: calc(((100vw - 96vh)/2)/14);
+
+}
+
 #submenu {
-	margin-left: 50px;
+	margin-top: 2vh;
+	height: 96vh;
+	width : calc((100vw - 96vh)/2.5);
+	align-items: center;
+	display: flex;
+
+}
+
+#submenu > div {
+	padding: 2vh;
 }
 
 
 #title {
 	
-	font-size: 45px;
+	font-size: calc(((100vw - 96vh)/2)/10);
 	align-items: center;
+
 }
 
 #highestScore {
 	font-size: 20px;
+
 }
 
 #highScore {
 	font-size: 40px;
+
 }
 
 .buttons {
 	font-size: 35px;
 	padding: 10px;
+
 }
 
 div.buttons:hover {
 	background-color: #262626;
 	color: beige;
 	box-shadow: 10px 10px 15px black;
+
 } 

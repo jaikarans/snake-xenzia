@@ -10,7 +10,8 @@ const drawSnake = () => {
 
 	let temp = ctx.fillStyle;
 
-	ctx.font = '25px myFont';
+	let fontPercentage = Math.floor((window.innerHeight * 2.5) / 100);
+	ctx.font = fontPercentage+'px myFont';
 
 	ctx.fillStyle = 'black';
 	ctx.fillRect(0,0,canvas.width, canvas.height);
