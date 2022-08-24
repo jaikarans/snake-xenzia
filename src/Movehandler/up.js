@@ -1,6 +1,6 @@
 import generateFruit from "../fruit/generateFruit.js";
 import snakeBiteSound from "../util/biteSound.js";
-import {gameOverSound,updateScoregi} from "../util/gameOver.js";
+import {gameOverSound,updateScore} from "../util/gameOver.js";
 import gameNotPaused from "../util/gameStatus.js";
 import increaseScore from '../util/increaseScore.js';
 
