@@ -10,6 +10,12 @@ import moveDown from './src/Movehandler/moveDown.js';
 import moveLeft from './src/Movehandler/moveLeft.js';
 import moveRight from './src/Movehandler/moveRight.js';
 
+// using setIntervalAsync instead of setInterval
+// because it dynamic setIntervalAsync doesn't skip fun calls
+window.setIntervalAsync = SetIntervalAsync.dynamic.setIntervalAsync;
+window.clearIntervalAsync = SetIntervalAsync.clearIntervalAsync;
+// window.intervalId = Object.create(SetIntervalAsync.setIntervalAsync);
+
 console.log(window.innerWidth +" "+ window.innerHeight);
 // console.log(window.body.clientWidth+" "+window.innerWidth); 
 
@@ -38,7 +44,6 @@ window.colCell = 30;
 window.cellHeight = window.canvas.height/window.colCell;
 window.cellWidth = window.canvas.width/window.colCell;
 
-window.intervalId = null;
 
 window.arr = [[]];
 window.snakeQueue = new Array();

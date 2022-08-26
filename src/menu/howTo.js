@@ -2,8 +2,13 @@ import { newSnake } from "../snakeArray.js";
 import drawSnake from "../snake/drawSnake.js";
 
 const showInstruction = () => {
-	clearInterval(window.intervalId);
-
+	if (true) {
+		(async () => {
+			await window.clearIntervalAsync(window.intervalId);
+			
+		})();
+	}
+	
 	document.getElementById('mouse-click').play();
 	newSnake();
 	drawSnake();

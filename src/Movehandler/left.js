@@ -27,7 +27,13 @@ const left_handler = () => {
 	}
 	// when snake hits the wall and comes to other side of wall and hits itself
 	else if (frontX-1 < 0 && arr[arr[0].length-1][frontY] == 1 && gameNotPaused()) {
-		clearInterval(window.intervalId);
+		if (true) {
+			(async () => {
+				await window.clearIntervalAsync(window.intervalId);
+				
+			})();
+		}
+	
 		updateScore();
 		gameOverSound();
 
@@ -54,7 +60,13 @@ const left_handler = () => {
 	}
 	// when next cell is body of snake itself
 	else if (arr[frontX-1][frontY] == 1) {
-		clearInterval(window.intervalId);
+		if (true) {
+			(async () => {
+				await window.clearIntervalAsync(window.intervalId);
+				
+			})();
+		}
+	
 		updateScore();
 		gameOverSound();
 

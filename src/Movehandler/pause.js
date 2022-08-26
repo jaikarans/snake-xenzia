@@ -1,5 +1,10 @@
 const pauseGame = () => {
-	clearInterval(window.intervalId);
+	if (true) {
+		(async () => {
+			await window.clearIntervalAsync(window.intervalId);
+			
+		})();
+	}
 
 	window.arrowUpPressedAlready = false;
 	window.arrowDownPressedAlready = false;
