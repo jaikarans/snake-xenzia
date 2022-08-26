@@ -8,7 +8,6 @@ const generateFruit = () => {
 		if (arr[i][j] == 0){
 			arr[i][j] = 3;
 			console.log('food generated arr[', i, ', ',j,']');
-			printArr();
 			return;
 		}
 	}
