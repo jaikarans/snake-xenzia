@@ -80,7 +80,6 @@ const right_handler = () => {
 		snakeQueue.pop();
 	}
 	
-	// console.log(frontX+" "+frontY+"   "+backX+" "+backY);
 
 }
 

@@ -20,20 +20,16 @@ window.setIntervalAsync = SetIntervalAsync.dynamic.setIntervalAsync;
 window.clearIntervalAsync = SetIntervalAsync.clearIntervalAsync;
 // window.intervalId = Object.create(SetIntervalAsync.setIntervalAsync);
 
-console.log(window.innerWidth +" "+ window.innerHeight);
-// console.log(window.body.clientWidth+" "+window.innerWidth); 
 
 var myFont = new FontFace('myFont', 'url(asset/PressStart2P-Regular.ttf)');
 myFont.load().then(function(font) {
 	document.fonts.add(font);
-  	console.log('Font loaded');
 });
 
 // document.getElementById('highestScore').style = 'font-family: myFont';
 window.canvas = document.getElementById('canvas');
 window.canvas.height = window.innerHeight - Math.floor(4*window.innerHeight/100);
 window.canvas.width = window.innerHeight - Math.floor(4*window.innerHeight/100);
-console.log('canvas h '+canvas.height+" "+canvas.width);
 window.ctx = window.canvas.getContext('2d');
 window.ctx.fillStyle = 'green';
 window.canvas.style = "background-image: url('./asset/black.jpg')";
