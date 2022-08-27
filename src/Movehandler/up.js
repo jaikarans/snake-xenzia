@@ -1,6 +1,6 @@
 import generateFruit from "../fruit/generateFruit.js";
 import snakeBiteSound from "../util/biteSound.js";
-import {gameOverSound,updateScore} from "../util/gameOver.js";
+import {gameOver, gameOverSound,updateScore} from "../util/gameOver.js";
 import gameNotPaused from "../util/gameStatus.js";
 import increaseScore from '../util/increaseScore.js';
 
@@ -34,8 +34,7 @@ const up_handler = () => {
 			})();
 		}
 	
-		updateScore();
-		gameOverSound();
+		gameOver();
 
 	}
 	// when snake just hits the wall and comes out of other wall
@@ -68,8 +67,7 @@ const up_handler = () => {
 			})();
 		}
 	
-		updateScore();
-		gameOverSound();
+		gameOver();
 
 	}
 	// when it does not have any food and moving forward;

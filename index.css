@@ -15,7 +15,7 @@ body{
 	background-color: #333232;
 	align-items: center;
 	display: flex;
-	
+
 
 }
 
@@ -24,6 +24,11 @@ body{
 	-webkit-box-shadow: 0 0 50px #000000;
 	box-shadow: 0 0 50px #000000;
 	display: inline;
+	/* -webkit-filter: blur(3px);
+  	-moz-filter: blur(3px);
+  	-o-filter: blur(3px);
+  	-ms-filter: blur(3px);
+  	filter: blur(3px); */
 }
 
 #score {
@@ -38,6 +43,12 @@ body{
 	width : calc((100vw - 96vh));
 	align-items: center;
 	display: flex;
+	/* -webkit-filter: blur(3px);
+  	-moz-filter: blur(3px);
+  	-o-filter: blur(3px);
+  	-ms-filter: blur(3px);
+  	filter: blur(3px); */
+
 	
 }
 
@@ -60,7 +71,11 @@ body{
 	width : calc((100vw - 96vh)/2.5);
 	align-items: center;
 	display: flex;
-
+	/* -webkit-filter: blur(3px);
+  	-moz-filter: blur(3px);
+  	-o-filter: blur(3px);
+  	-ms-filter: blur(3px);
+  	filter: blur(3px); */
 }
 
 #submenu > div {
@@ -88,12 +103,42 @@ body{
 .buttons {
 	font-size: 35px;
 	padding: 10px;
+	cursor: pointer;
 
 }
 
 div.buttons:hover {
 	background-color: #262626;
-	color: beige;
+	color: rgb(255, 255, 255);
 	box-shadow: 10px 10px 15px black;
 
-} 
+}
+
+#overlay {
+	position: fixed;
+	/* display: table; */
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(32, 29, 29, 0.432);
+	z-index: 2;
+	cursor: pointer;
+	align-items: center;
+	text-align:center;
+	
+}
+
+#replay {
+	color: rgb(255, 255, 255);
+	font-size: 40px;
+	text-align:center;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+

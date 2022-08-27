@@ -28,15 +28,19 @@ const setEasyLevel = () => {
 
 	easy.style.backgroundColor = '#262626';
 	easy.style.boxShadow = '10px 10px 15px black';
+	easy.style.color = '#ffffff';
 
 	medium.style.backgroundColor = '#333232';
 	medium.style.boxShadow = 'none';
+	medium.style.color = '#afafaf';
 
 	hard.style.backgroundColor = '#333232';
 	hard.style.boxShadow = 'none';
+	hard.style.color = '#afafaf';
 
 	howTo.style.backgroundColor = '#333232';
 	howTo.style.boxShadow = 'none';
+	howTo.style.color = '#afafaf';
 
 }
 

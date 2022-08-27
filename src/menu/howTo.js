@@ -26,15 +26,19 @@ const showInstruction = () => {
 
 	easy.style.backgroundColor = '#333232';
 	easy.style.boxShadow = 'none';
+	easy.style.color = '#afafaf';
 
 	medium.style.backgroundColor = '#333232';
 	medium.style.boxShadow = 'none';
+	medium.style.color = '#afafaf';
 
 	hard.style.backgroundColor = '#333232';
 	hard.style.boxShadow = 'none';
+	hard.style.color = '#afafaf';
 
 	howTo.style.backgroundColor = '#262626';
 	howTo.style.boxShadow = '10px 10px 15px black';
+	howTo.style.color = '#ffffff';
 
 }
 

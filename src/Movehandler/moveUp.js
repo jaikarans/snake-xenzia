@@ -2,7 +2,6 @@ import up_handler from './up.js';
 import drawSnake from "../snake/drawSnake.js";
 
 const moveUp = () => {
-	window.clearIntervalAsync(Number(document.getElementById('delay').innerHTML));
 	if (true) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);

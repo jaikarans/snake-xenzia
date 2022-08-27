@@ -9,6 +9,10 @@ import moveUp from './src/Movehandler/moveUp.js';
 import moveDown from './src/Movehandler/moveDown.js';
 import moveLeft from './src/Movehandler/moveLeft.js';
 import moveRight from './src/Movehandler/moveRight.js';
+import { replay } from './src/util/gameOver.js';
+
+// setting flag to keyborad action
+window.keyboardEnabled = true;
 
 // using setIntervalAsync instead of setInterval
 // because it dynamic setIntervalAsync doesn't skip fun calls
@@ -60,30 +64,35 @@ document.getElementById('hard').addEventListener('click', setHardLevel);
 document.getElementById('how-to-play').addEventListener('click', showInstruction);
 
 window.addEventListener('keydown', (event) => {
-	if (event.key == ' ') {
-		pauseGame();
-
-	} else if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') &&
-	 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'down') {
-		window.currentDirection = 'up';
-		moveUp();
-
-	} else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') &&
-	 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'up') {
-		window.currentDirection = 'down';
-		moveDown();
-
-	} else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') &&
-	 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'right') {
-		window.currentDirection = 'left';
-		moveLeft();
-
-	} else if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') &&
-	 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'left') {
-		window.currentDirection = 'right';
-		moveRight();
-
+	if (window.keyboardEnabled) {
+		if (event.key == ' ') {
+			pauseGame();
+	
+		} else if ((event.key == 'ArrowUp' || event.key=='w' || event.key=='W') &&
+		 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'down') {
+			window.currentDirection = 'up';
+			moveUp();
+	
+		} else if ((event.key=='ArrowDown' || event.key=='s' || event.key=='S') &&
+		 !window.arrowUpPressedAlready && !window.arrowDownPressedAlready && window.currentDirection != 'up') {
+			window.currentDirection = 'down';
+			moveDown();
+	
+		} else if ((event.key == 'ArrowLeft' || event.key=='a' || event.key=='A') &&
+		 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'right') {
+			window.currentDirection = 'left';
+			moveLeft();
+	
+		} else if ((event.key == 'ArrowRight' || event.key=='d' || event.key=='D') &&
+		 !window.arrowLeftPressedAlready && !window.arrowRightPressedAlready && window.currentDirection != 'left') {
+			window.currentDirection = 'right';
+			moveRight();
+	
+		}
 	}
 
 });
 
+document.getElementById('overlay').addEventListener('click', () => {
+	replay();
+});
