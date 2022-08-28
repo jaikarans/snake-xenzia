@@ -32,7 +32,7 @@ const hideHowToInstruction = () => {
 }
 
 const showInstruction = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

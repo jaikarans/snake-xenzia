@@ -2,7 +2,7 @@ import down_handler from './down.js';
 import drawSnake from "../snake/drawSnake.js";
 
 const moveDown = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

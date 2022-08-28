@@ -1,5 +1,5 @@
 const pauseGame = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

@@ -2,7 +2,7 @@ import { newSnake } from "../snakeArray.js";
 import drawSnake from "../snake/drawSnake.js";
 
 const setMediumLevel = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

@@ -2,7 +2,7 @@ import up_handler from './up.js';
 import drawSnake from "../snake/drawSnake.js";
 
 const moveUp = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

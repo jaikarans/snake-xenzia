@@ -14,7 +14,7 @@ const updateScore = () => {
 }
 
 const gameOver = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

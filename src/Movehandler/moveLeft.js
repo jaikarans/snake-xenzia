@@ -2,7 +2,7 @@ import left_handler from './left.js';
 import drawSnake from "../snake/drawSnake.js";
 
 const moveLeft = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			

@@ -2,7 +2,7 @@ import right_handler from './right.js';
 import drawSnake from "../snake/drawSnake.js";
 
 const moveRight = () => {
-	if (true) {
+	if (window.intervalId != null) {
 		(async () => {
 			await window.clearIntervalAsync(window.intervalId);
 			
