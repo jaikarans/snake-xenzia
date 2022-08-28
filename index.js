@@ -3,13 +3,19 @@ import {generateArray, newSnake} from './src/snakeArray.js';
 import setEasyLevel from './src/menu/easy.js';
 import setMediumLevel from './src/menu/medium.js';
 import setHardLevel from './src/menu/hard.js';
-import showInstruction from './src/menu/howTo.js';
+import {hideHowToInstruction, showInstruction} from './src/menu/howTo.js';
 import pauseGame from './src/Movehandler/pause.js';
 import moveUp from './src/Movehandler/moveUp.js';
 import moveDown from './src/Movehandler/moveDown.js';
 import moveLeft from './src/Movehandler/moveLeft.js';
 import moveRight from './src/Movehandler/moveRight.js';
 import { replay } from './src/util/gameOver.js';
+
+// highlight easy menu because speed by default is easy
+let easy = document.getElementById('easy');
+easy.style.backgroundColor = '#262626';
+easy.style.boxShadow = '10px 10px 15px black';
+easy.style.color = '#ffffff';
 
 // setting flag to keyborad action
 window.keyboardEnabled = true;
@@ -95,4 +101,8 @@ window.addEventListener('keydown', (event) => {
 
 document.getElementById('overlay').addEventListener('click', () => {
 	replay();
+});
+
+document.getElementById('howToOverlay').addEventListener('click', () => {
+	hideHowToInstruction();
 });

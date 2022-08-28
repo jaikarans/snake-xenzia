@@ -141,4 +141,26 @@ div.buttons:hover {
 
 }
 
+#howToOverlay {
+	position: fixed;
+	display: none;
+	/* display: flex; */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(32, 29, 29, 0.432);
+	z-index: 2;
+	cursor: pointer;
+	align-items: center;
+	text-align:center;
+	
+}
+
+#keyboard-instruction {
+	margin-left: auto;
+	margin-right: auto;
+}
 

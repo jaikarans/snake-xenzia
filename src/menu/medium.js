@@ -10,7 +10,7 @@ const setMediumLevel = () => {
 	}
 
 	document.getElementById('mouse-click').play();
-	document.getElementById('delay').innerHTML = 70;
+	document.getElementById('delay').innerHTML = 55;
 
 	newSnake();
 	drawSnake();
