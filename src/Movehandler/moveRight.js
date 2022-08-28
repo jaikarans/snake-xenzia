@@ -15,7 +15,6 @@ const moveRight = () => {
 	window.arrowRightPressedAlready = true;
 
 	window.intervalId = window.setIntervalAsync(() => {
-		console.log('right');
 		right_handler();
 		drawSnake();
 	}, Number(document.getElementById('delay').innerHTML));
