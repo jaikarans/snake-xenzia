@@ -8,7 +8,6 @@ const generateArray = () => {
 			
 		}
 	}
-	// console.log('arr length ', arr.length, ', ', arr[0].length, '||', window.rowCell, ', ', window.colCell);
 }
 
 const newSnake = () => {
