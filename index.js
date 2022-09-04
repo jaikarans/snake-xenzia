@@ -55,7 +55,7 @@ window.cellHeight = window.canvas.height/window.colCell;
 window.cellWidth = window.canvas.width/window.colCell;
 
 
-window.arr = [[]];
+window.arr = new Array();
 window.snakeQueue = new Array();
 generateArray();
 newSnake();

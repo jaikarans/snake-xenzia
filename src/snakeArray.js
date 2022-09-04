@@ -1,12 +1,14 @@
 const generateArray = () => {
 	let arr = window.arr;
 	for (let i=0; i<window.rowCell; i++) {
-		arr.push([]);
+		arr.push(new Array());
 		let a = arr[i];
 		for (let j=0; j<window.colCell; j++) {
 			a.push(0);
+			
 		}
 	}
+	// console.log('arr length ', arr.length, ', ', arr[0].length, '||', window.rowCell, ', ', window.colCell);
 }
 
 const newSnake = () => {
