@@ -8,6 +8,9 @@ const gameOverSound = () => {
 const updateScore = () => {
 	if (Number(document.getElementById('highScore').innerHTML) < Number(document.getElementById('score').innerHTML)) {
 		document.getElementById('highScore').innerHTML = document.getElementById('score').innerHTML;
+		if (localStorage.getItem('highestScore')) {
+			localStorage.setItem('highestScore', document.getElementById('score').innerText)
+		}
 	
 	}
 

@@ -47,6 +47,14 @@
 			<br>
 			<br>
 			<p id="highScore">0</p>
+			<script>
+				// check if localStorage already has highest score i.e user revisited the game
+				if (localStorage.getItem('highestScore')) {
+					document.getElementById('highScore').innerHTML = localStorage.getItem('highestScore');
+				} else {
+					localStorage.setItem('highestScore', '0');
+				}
+			</script>
 		</div>
 	</div>
 	<div id="overlay">
